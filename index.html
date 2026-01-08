@@ -11,7 +11,6 @@
 
 <style>
 
-/* GENERAL */
 html, body {
   margin:0;
   padding:0;
@@ -21,7 +20,6 @@ html, body {
   overflow-x:hidden;
 }
 
-/* HEADER */
 header{
   position:fixed;
   top:0;
@@ -59,7 +57,6 @@ header{
   text-shadow:0 0 12px rgba(0,255,170,0.7);
 }
 
-/* POPUP */
 .popup-overlay{
   position:fixed;
   top:0;
@@ -117,37 +114,24 @@ header{
   box-shadow:0 0 14px rgba(0,255,200,0.5);
 }
 
-.join-btn:hover{
-  background:linear-gradient(135deg,#00ffe0,#00a6ff);
-  box-shadow:0 0 22px rgba(0,255,200,0.8);
-}
-
 .already-btn{
   background:rgba(255,255,255,0.12);
   color:#fff;
 }
 
-.already-btn:hover{
-  background:rgba(255,255,255,0.22);
-}
-
-/* VIDEO */
 .video-container{
   width:100%;
   height:50vh;
   background:#000;
   margin-top:70px;
-  position:relative;
 }
 
 .video-container iframe{
   width:100%;
   height:100%;
   border:none;
-  object-fit:cover;
 }
 
-/* SECTIONS */
 .section-box{
   width:92%;
   margin:18px auto;
@@ -156,7 +140,6 @@ header{
   text-align:center;
   background:rgba(0,255,170,0.07);
   border:1px solid rgba(0,255,170,0.25);
-  backdrop-filter:blur(10px);
 }
 
 .section-title{
@@ -176,63 +159,60 @@ header{
   cursor:pointer;
 }
 
-.action-btn:hover{
-  transform:translateY(-2px);
-}
-
-/* FLOATING TELEGRAM BUTTON */
-.telegram-float{
+/* NEW FLOATING SOCIAL BUTTONS */
+.social-float{
   position:fixed;
-  bottom:20px;
   right:20px;
-  width:60px;
-  height:60px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#00ffbf,#0078ff);
+  bottom:25px;
   display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-  font-size:28px;
-  text-decoration:none;
-  box-shadow:0 0 18px rgba(0,255,200,0.6);
-  animation:floatPulse 1.6s infinite ease-in-out;
+  flex-direction:column;
+  gap:12px;
   z-index:99999;
 }
 
-@keyframes floatPulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.15);}
-  100%{transform:scale(1);}
+.social-btn{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 18px rgba(0,255,200,0.6);
+}
+
+.social-btn img{
+  width:28px;
+  height:28px;
+}
+
+/* Telegram */
+.social-btn.telegram{
+  background:#0088cc;
+}
+
+/* Instagram */
+.social-btn.instagram{
+  background:radial-gradient(circle at 30% 110%,
+    #fdf497 0%, #fdf497 5%, #fd5949 45%,
+    #d6249f 60%, #285AEB 90%);
 }
 
 </style>
 </head>
 <body>
 
-<!-- VISITOR POPUP -->
-<div class="popup-overlay" id="visitorPopup" style="display:none;">
-  <div class="popup-box">
-    <button class="close-btn" onclick="closeVisitorPopup()">×</button>
-    <div class="popup-header">Total Visitors</div>
-    <img src="https://visit-counter.vercel.app/counter.png?page=crickcast.live&s=40&c=00ff00&bg=00000000"/>
-  </div>
-</div>
-
-<!-- JOIN TELEGRAM POPUP -->
 <div class="popup-overlay" id="popup">
   <div class="popup-box">
     <button class="close-btn" onclick="closePopup()">×</button>
-    <div class="popup-header">Support Us🤝</div>
-    <div class="popup-subtitle">Join our Channel for live matches and instant updates..</div>
+    <div>Support Us 🤝</div>
+    <div>Join our Channel for live matches and instant updates..</div>
     <div class="popup-buttons">
       <a href="https://t.me/+r_4JF-IieX0wNjU9" target="_blank" class="popup-btn join-btn">Join Now</a>
-      <button class="popup-btn already-btn" onclick="closePopup(); startStream();">Already Joined</button>
+      <button class="popup-btn already-btn" onclick="closePopup()">Already Joined</button>
     </div>
   </div>
 </div>
 
-<!-- HEADER -->
 <header>
   <div class="logo-wrapper">
     <svg viewBox="0 0 64 64">
@@ -243,18 +223,10 @@ header{
   </div>
 </header>
 
-<!-- VIDEO (✅ FIXED PLAYBACK) -->
 <div class="video-container">
-  <iframe
-    src="https://cricketstan.github.io/TNT-1/"
-    frameborder="0"
-    allowfullscreen
-    allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
-    sandbox="allow-forms allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation allow-popups"
-  ></iframe>
+  <iframe src="https://cricketstan.github.io/TNT-1/" allowfullscreen></iframe>
 </div>
 
-<!-- FOLLOW SECTION -->
 <div class="section-box">
   <div class="section-title">🔔 Follow Us for Updates</div>
   <a href="https://t.me/+r_4JF-IieX0wNjU9" target="_blank">
@@ -262,28 +234,26 @@ header{
   </a>
 </div>
 
-<!-- SHARE SECTION -->
 <div class="section-box">
   <div class="section-title">🔗 Share This Page</div>
-  <button class="action-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('✅ Link Copied! Share Now');">
+  <button class="action-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link Copied');">
     Copy & Share This Page
   </button>
 </div>
 
-<!-- FLOATING TELEGRAM BUTTON -->
-<a href="https://t.me/+r_4JF-IieX0wNjU9" target="_blank" class="telegram-float">📣</a>
+<!-- FLOATING INSTAGRAM & TELEGRAM -->
+<div class="social-float">
+  <a href="https://t.me/+r_4JF-IieX0wNjU9" target="_blank" class="social-btn telegram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png">
+  </a>
+  <a href="https://www.instagram.com/crickcast.live" target="_blank" class="social-btn instagram">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png">
+  </a>
+</div>
 
 <script>
 function closePopup(){
   document.getElementById('popup').style.display='none';
-}
-
-function startStream(){
-  document.querySelector('.video-container iframe').src = document.querySelector('.video-container iframe').src;
-}
-
-function closeVisitorPopup(){
-  document.getElementById('visitorPopup').style.display='none';
 }
 </script>
 
